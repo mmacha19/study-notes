@@ -77,5 +77,19 @@
     "currentWeek": 1,
     "totalProblems": 80,
     "targetPerDay": 2
-  }
+  },
+  "upNext": [
+    { "problem": "Design HashSet", "difficulty": "Easy", "pattern": "Design", "week": 1 },
+    { "problem": "Ransom Note", "difficulty": "Easy", "pattern": "Counting", "week": 2 },
+    { "problem": "Longest Palindrome", "difficulty": "Easy", "pattern": "Counting", "week": 2 },
+    { "problem": "Majority Element", "difficulty": "Easy", "pattern": "Array", "week": 2 },
+    { "problem": "Add Binary", "difficulty": "Easy", "pattern": "String", "week": 2 },
+    { "problem": "Diameter of Binary Tree", "difficulty": "Easy", "pattern": "Tree Recursion", "week": 2 },
+    { "problem": "Middle of the Linked List", "difficulty": "Easy", "pattern": "Two Pointers", "week": 2 },
+    { "problem": "Design HashMap", "difficulty": "Easy", "pattern": "Design", "week": 2 },
+    { "problem": "Min Stack", "difficulty": "Medium", "pattern": "Stack Design", "week": 2 },
+    { "problem": "Insert Interval", "difficulty": "Medium", "pattern": "Array", "week": 3 },
+    { "problem": "Longest Substring Without Repeating Characters", "difficulty": "Medium", "pattern": "Sliding Window", "week": 3 },
+    { "problem": "3Sum", "difficulty": "Medium", "pattern": "Two Pointers", "week": 3 }
+  ]
 }

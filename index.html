@@ -36,6 +36,32 @@ h1{font-size:28px;font-weight:700;margin-bottom:4px}
 .heat-day.l4{background:#39d353}
 .heat-day[title]{cursor:default}
 
+/* Up Next queue */
+.queue-list{display:grid;gap:8px;margin-bottom:32px}
+.queue-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.queue-item:first-child{border-color:var(--accent);background:rgba(168,85,247,0.08)}
+.queue-item .name{font-weight:500}
+.queue-item .meta{display:flex;gap:8px;align-items:center}
+.queue-item .diff{font-size:11px;padding:3px 8px;border-radius:4px;font-weight:600}
+.queue-item .diff.Easy{background:rgba(63,185,80,0.15);color:var(--green)}
+.queue-item .diff.Medium{background:rgba(210,153,34,0.15);color:var(--yellow)}
+.queue-item .diff.Hard{background:rgba(248,81,73,0.15);color:var(--red)}
+.queue-item .pattern-tag{font-size:11px;color:var(--dim);background:#21262d;padding:3px 8px;border-radius:4px}
+.queue-item .week-tag{font-size:10px;color:var(--dim)}
+.queue-current{font-size:10px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:1px}
+
+/* Recent solves */
+.recent-grid{display:grid;gap:8px;margin-bottom:32px}
+.recent-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start}
+.recent-item .top-row{display:flex;align-items:center;gap:10px}
+.recent-item .problem-name{font-size:15px;font-weight:600}
+.recent-item .diff{font-size:11px;padding:3px 8px;border-radius:4px;font-weight:600}
+.recent-item .diff.Easy{background:rgba(63,185,80,0.15);color:var(--green)}
+.recent-item .diff.Medium{background:rgba(210,153,34,0.15);color:var(--yellow)}
+.recent-item .diff.Hard{background:rgba(248,81,73,0.15);color:var(--red)}
+.recent-item .date{font-size:12px;color:var(--dim);font-family:monospace;text-align:right;white-space:nowrap}
+.recent-item .notes{font-size:13px;color:var(--dim);line-height:1.5;grid-column:1/-1;margin-top:2px}
+
 /* Pattern cards */
 .patterns-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;margin-bottom:32px}
 .pattern-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:border-color 0.2s}
@@ -56,25 +82,15 @@ h1{font-size:28px;font-weight:700;margin-bottom:4px}
 .sr-item .due.upcoming{background:rgba(63,185,80,0.15);color:var(--green)}
 .sr-item .due.later{background:#21262d;color:var(--dim)}
 
-/* Recent log */
-.log-list{display:grid;gap:6px;margin-bottom:32px}
-.log-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:grid;grid-template-columns:90px 1fr auto;align-items:center;gap:12px;font-size:13px}
-.log-item .date{color:var(--dim);font-size:12px;font-family:monospace}
-.log-item .diff{font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600}
-.log-item .diff.Easy{background:rgba(63,185,80,0.15);color:var(--green)}
-.log-item .diff.Medium{background:rgba(210,153,34,0.15);color:var(--yellow)}
-.log-item .diff.Hard{background:rgba(248,81,73,0.15);color:var(--red)}
-.log-item .notes{color:var(--dim);font-size:12px;grid-column:1/-1;padding-top:4px;line-height:1.4}
-
-/* Streak fire */
 .streak-fire{font-size:28px;display:inline}
 
 @media(max-width:600px){
   body{padding:12px}
   .stats-row{grid-template-columns:repeat(2,1fr)}
   .patterns-grid{grid-template-columns:1fr}
-  .log-item{grid-template-columns:80px 1fr auto}
   h1{font-size:22px}
+  .recent-item{grid-template-columns:1fr}
+  .recent-item .date{text-align:left}
 }
 </style>
 </head>
@@ -94,6 +110,12 @@ h1{font-size:28px;font-weight:700;margin-bottom:4px}
   <div class="progress-label"><span id="progress-done"></span><span id="progress-total"></span></div>
 </div>
 
+<div class="section-title"><span>⏭</span> Up Next</div>
+<div class="queue-list" id="queue"></div>
+
+<div class="section-title"><span>📋</span> Recent Solves</div>
+<div class="recent-grid" id="recent"></div>
+
 <div class="heatmap" id="heatmap">
   <div class="heatmap-title">Activity (last 60 days)</div>
 </div>
@@ -103,9 +125,6 @@ h1{font-size:28px;font-weight:700;margin-bottom:4px}
 
 <div class="section-title"><span>🧠</span> Patterns</div>
 <div class="patterns-grid" id="patterns"></div>
-
-<div class="section-title"><span>📋</span> Recent Solves</div>
-<div class="log-list" id="log"></div>
 
 <script>
 const DATA_URL = 'data.json';
@@ -122,6 +141,7 @@ function render(data) {
   const patterns = data.patterns || [];
   const sr = data.spacedRepetition || [];
   const plan = data.weekPlan || {};
+  const upNext = data.upNext || [];
 
   // Stats
   const totalSolved = completed.length;
@@ -133,11 +153,8 @@ function render(data) {
   let streak = 0;
   const dateSet = new Set(completed.map(c => c.date));
   let d = new Date();
-  // Check if solved today; if not, start from yesterday
   const todayStr = d.toISOString().slice(0, 10);
-  if (!dateSet.has(todayStr)) {
-    d.setDate(d.getDate() - 1);
-  }
+  if (!dateSet.has(todayStr)) { d.setDate(d.getDate() - 1); }
   while (true) {
     const ds = d.toISOString().slice(0, 10);
     if (dateSet.has(ds)) { streak++; d.setDate(d.getDate() - 1); }
@@ -159,6 +176,39 @@ function render(data) {
   document.getElementById('progress-fill').style.width = pct + '%';
   document.getElementById('progress-done').textContent = totalSolved + ' solved';
   document.getElementById('progress-total').textContent = total + ' total';
+
+  // Up Next queue
+  const queueEl = document.getElementById('queue');
+  upNext.slice(0, 6).forEach((item, i) => {
+    queueEl.innerHTML += `
+      <div class="queue-item">
+        <div>
+          ${i === 0 ? '<div class="queue-current">→ DO THIS NEXT</div>' : ''}
+          <span class="name">${item.problem}</span>
+        </div>
+        <div class="meta">
+          <span class="pattern-tag">${item.pattern}</span>
+          <span class="diff ${item.difficulty}">${item.difficulty}</span>
+          <span class="week-tag">W${item.week}</span>
+        </div>
+      </div>
+    `;
+  });
+
+  // Recent solves (newest first, show all)
+  const recentEl = document.getElementById('recent');
+  [...completed].reverse().forEach(c => {
+    recentEl.innerHTML += `
+      <div class="recent-item">
+        <div class="top-row">
+          <span class="problem-name">${c.problem}</span>
+          <span class="diff ${c.difficulty}">${c.difficulty}</span>
+        </div>
+        <span class="date">${c.date}</span>
+        ${c.notes ? '<div class="notes">' + escHtml(c.notes) + '</div>' : ''}
+      </div>
+    `;
+  });
 
   // Heatmap (last 60 days)
   const heatmap = document.getElementById('heatmap');
@@ -202,19 +252,6 @@ function render(data) {
         <div class="trigger">${p.trigger}</div>
         <pre>${escHtml(p.skeleton)}</pre>
         <div class="problems">${tags}</div>
-      </div>
-    `;
-  });
-
-  // Recent log (newest first)
-  const logEl = document.getElementById('log');
-  [...completed].reverse().forEach(c => {
-    logEl.innerHTML += `
-      <div class="log-item">
-        <span class="date">${c.date}</span>
-        <span>${c.problem}</span>
-        <span class="diff ${c.difficulty}">${c.difficulty}</span>
-        ${c.notes ? '<span class="notes">' + escHtml(c.notes) + '</span>' : ''}
       </div>
     `;
   });
