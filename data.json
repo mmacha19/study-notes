@@ -67,10 +67,10 @@
     { "problem": "Invert Binary Tree", "lastSolved": "2026-03-24", "nextRetry": "2026-03-27", "interval": 3 },
     { "problem": "LRU Cache", "lastSolved": "2026-03-24", "nextRetry": "2026-03-27", "interval": 3 },
     { "problem": "Binary Search", "lastSolved": "2026-03-26", "nextRetry": "2026-03-29", "interval": 3 },
-    { "problem": "Flood Fill", "lastSolved": "2026-03-27", "nextRetry": "2026-03-30", "interval": 3 },
-    { "problem": "First Bad Version", "lastSolved": "2026-03-27", "nextRetry": "2026-03-30", "interval": 3 },
-    { "problem": "Climbing Stairs", "lastSolved": "2026-03-27", "nextRetry": "2026-03-30", "interval": 3 },
-    { "problem": "Reverse Linked List", "lastSolved": "2026-03-27", "nextRetry": "2026-03-30", "interval": 3 }
+    { "problem": "Flood Fill", "lastSolved": "2026-04-01", "nextRetry": "2026-04-08", "interval": 7 },
+    { "problem": "First Bad Version", "lastSolved": "2026-04-01", "nextRetry": "2026-04-08", "interval": 7 },
+    { "problem": "Climbing Stairs", "lastSolved": "2026-04-01", "nextRetry": "2026-04-08", "interval": 7 },
+    { "problem": "Reverse Linked List", "lastSolved": "2026-04-01", "nextRetry": "2026-04-08", "interval": 7 }
   ],
   "weekPlan": {
     "totalWeeks": 8,
