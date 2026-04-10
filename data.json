@@ -81,7 +81,8 @@
     { "date": "2026-04-06", "problem": "Add Binary", "difficulty": "Easy", "pattern": "string", "notes": "String manipulation, carry logic" },
     { "date": "2026-04-07", "problem": "Diameter of Binary Tree", "difficulty": "Easy", "pattern": "dfs-grid", "notes": "Tree recursion, track max diameter via DFS height" },
     { "date": "2026-04-09", "problem": "Merge Two Sorted Lists", "difficulty": "Easy", "pattern": "dummy-node", "notes": "Retry — dummy node approach" },
-    { "date": "2026-04-09", "problem": "Middle of the Linked List", "difficulty": "Easy", "pattern": "two-pointers", "notes": "Slow/fast pointer" }
+    { "date": "2026-04-09", "problem": "Middle of the Linked List", "difficulty": "Easy", "pattern": "two-pointers", "notes": "Slow/fast pointer" },
+    { "date": "2026-04-10", "problem": "Design HashMap", "difficulty": "Easy", "pattern": "design-hashing", "notes": "Hash function + chaining" }
   ],
   "spacedRepetition": [
     { "problem": "Merge Two Sorted Lists", "lastSolved": "2026-02-11", "nextRetry": "2026-04-01", "interval": 3 },
@@ -100,7 +101,8 @@
     { "problem": "Add Binary", "lastSolved": "2026-04-06", "nextRetry": "2026-04-13", "interval": 7 },
     { "problem": "Diameter of Binary Tree", "lastSolved": "2026-04-07", "nextRetry": "2026-04-14", "interval": 7 },
     { "problem": "Merge Two Sorted Lists", "lastSolved": "2026-04-09", "nextRetry": "2026-04-16", "interval": 7 },
-    { "problem": "Middle of the Linked List", "lastSolved": "2026-04-09", "nextRetry": "2026-04-16", "interval": 7 }
+    { "problem": "Middle of the Linked List", "lastSolved": "2026-04-09", "nextRetry": "2026-04-16", "interval": 7 },
+    { "problem": "Design HashMap", "lastSolved": "2026-04-10", "nextRetry": "2026-04-17", "interval": 7 }
   ],
   "weekPlan": {
     "totalWeeks": 8,
@@ -109,7 +111,6 @@
     "targetPerDay": 2
   },
   "upNext": [
-    { "problem": "Design HashMap", "difficulty": "Easy", "pattern": "Design", "week": 2 },
     { "problem": "Min Stack", "difficulty": "Medium", "pattern": "Stack Design", "week": 2 },
     { "problem": "Insert Interval", "difficulty": "Medium", "pattern": "Array", "week": 3 },
     { "problem": "Longest Substring Without Repeating Characters", "difficulty": "Medium", "pattern": "Sliding Window", "week": 3 },
