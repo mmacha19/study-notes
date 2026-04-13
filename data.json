@@ -86,7 +86,10 @@
     { "date": "2026-04-10", "problem": "Design HashSet", "difficulty": "Easy", "pattern": "design-hashing", "notes": "Retry — hashing fundamentals" },
     { "date": "2026-04-10", "problem": "Ransom Note", "difficulty": "Easy", "pattern": "counting-hashmap", "notes": "Retry — frequency map" },
     { "date": "2026-04-11", "problem": "Min Stack", "difficulty": "Medium", "pattern": "stack-design", "notes": "Two stacks — main + min tracker" },
-    { "date": "2026-04-11", "problem": "Longest Substring Without Repeating Characters", "difficulty": "Medium", "pattern": "sliding-window", "notes": "Sliding window + hashset" }
+    { "date": "2026-04-11", "problem": "Longest Substring Without Repeating Characters", "difficulty": "Medium", "pattern": "sliding-window", "notes": "Sliding window + hashset" },
+    { "date": "2026-04-12", "problem": "Valid Palindrome", "difficulty": "Easy", "pattern": "two-pointers", "notes": "Retry" },
+    { "date": "2026-04-12", "problem": "Ransom Note", "difficulty": "Easy", "pattern": "counting-hashmap", "notes": "Retry #2" },
+    { "date": "2026-04-12", "problem": "LRU Cache", "difficulty": "Medium", "pattern": "hashmap-dll", "notes": "Retry — list+hashmap approach works but O(n) remove. Need to drill DLL version for O(1)." }
   ],
   "spacedRepetition": [
     { "problem": "Merge Two Sorted Lists", "lastSolved": "2026-02-11", "nextRetry": "2026-04-01", "interval": 3 },
