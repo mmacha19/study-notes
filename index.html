@@ -149,10 +149,10 @@ function render(data) {
   const medCount = completed.filter(c => c.difficulty === 'Medium').length;
   const hardCount = completed.filter(c => c.difficulty === 'Hard').length;
 
-  // Streak
+  // Streak (use Pacific Time for date comparison)
   let streak = 0;
   const dateSet = new Set(completed.map(c => c.date));
-  let d = new Date();
+  let d = new Date(new Date().toLocaleString('en-US', {timeZone: 'America/Los_Angeles'}));
   const todayStr = d.toISOString().slice(0, 10);
   if (!dateSet.has(todayStr)) { d.setDate(d.getDate() - 1); }
   while (true) {
