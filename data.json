@@ -120,6 +120,27 @@
   },
   "upNext": [
     { "problem": "Insert Interval", "difficulty": "Medium", "pattern": "Array", "week": 3 },
-    { "problem": "3Sum", "difficulty": "Medium", "pattern": "Two Pointers", "week": 3 }
+    { "problem": "3Sum", "difficulty": "Medium", "pattern": "Two Pointers", "week": 3 },
+    { "problem": "01 Matrix", "difficulty": "Medium", "pattern": "BFS", "week": 3 },
+    { "problem": "K Closest Points to Origin", "difficulty": "Medium", "pattern": "Heap", "week": 3 },
+    { "problem": "Binary Tree Level Order Traversal", "difficulty": "Medium", "pattern": "BFS", "week": 3 },
+    { "problem": "Clone Graph", "difficulty": "Medium", "pattern": "Graph DFS/BFS", "week": 3 },
+    { "problem": "Encode and Decode Strings", "difficulty": "Medium", "pattern": "Design", "week": 3 },
+    { "problem": "Course Schedule", "difficulty": "Medium", "pattern": "Graph Topological Sort", "week": 4 },
+    { "problem": "Number of Islands", "difficulty": "Medium", "pattern": "Graph DFS", "week": 4 },
+    { "problem": "Coin Change", "difficulty": "Medium", "pattern": "DP", "week": 4 },
+    { "problem": "House Robber", "difficulty": "Medium", "pattern": "DP", "week": 4 },
+    { "problem": "Combination Sum", "difficulty": "Medium", "pattern": "Backtracking", "week": 4 },
+    { "problem": "Word Break", "difficulty": "Medium", "pattern": "DP", "week": 5 },
+    { "problem": "Implement Trie", "difficulty": "Medium", "pattern": "Trie", "week": 5 },
+    { "problem": "Container With Most Water", "difficulty": "Medium", "pattern": "Two Pointers", "week": 5 },
+    { "problem": "Longest Increasing Subsequence", "difficulty": "Medium", "pattern": "DP", "week": 5 },
+    { "problem": "Unique Paths", "difficulty": "Medium", "pattern": "DP", "week": 6 },
+    { "problem": "Jump Game", "difficulty": "Medium", "pattern": "Greedy", "week": 6 },
+    { "problem": "Search in Rotated Sorted Array", "difficulty": "Medium", "pattern": "Binary Search", "week": 6 },
+    { "problem": "Validate BST", "difficulty": "Medium", "pattern": "Tree DFS", "week": 6 },
+    { "problem": "Merge K Sorted Lists", "difficulty": "Hard", "pattern": "Heap", "week": 7 },
+    { "problem": "Find Median from Data Stream", "difficulty": "Hard", "pattern": "Heap", "week": 7 },
+    { "problem": "Word Search II", "difficulty": "Hard", "pattern": "Trie + Backtracking", "week": 8 }
   ]
 }
