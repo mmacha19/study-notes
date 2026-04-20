@@ -96,7 +96,8 @@
     { "date": "2026-04-18", "problem": "Flood Fill", "difficulty": "Easy", "pattern": "dfs-grid", "notes": "Retry — grid DFS warmup" },
     { "date": "2026-04-18", "problem": "Number of Islands", "difficulty": "Medium", "pattern": "dfs-grid", "notes": "Grid DFS, mark visited, count components" },
     { "date": "2026-04-20", "problem": "01 Matrix", "difficulty": "Medium", "pattern": "bfs", "notes": "Multi-source BFS — start from all zeros, expand outward" },
-    { "date": "2026-04-20", "problem": "Invert Binary Tree", "difficulty": "Easy", "pattern": "dfs-grid", "notes": "Retry — tree recursion" }
+    { "date": "2026-04-20", "problem": "Invert Binary Tree", "difficulty": "Easy", "pattern": "dfs-grid", "notes": "Retry — tree recursion" },
+    { "date": "2026-04-20", "problem": "Binary Tree Level Order Traversal", "difficulty": "Medium", "pattern": "bfs", "notes": "BFS with queue, process level by level" }
   ],
   "spacedRepetition": [
     { "problem": "Merge Two Sorted Lists", "lastSolved": "2026-02-11", "nextRetry": "2026-04-01", "interval": 3 },
@@ -126,7 +127,6 @@
   },
   "upNext": [
     { "problem": "K Closest Points to Origin", "difficulty": "Medium", "pattern": "Heap", "week": 3 },
-    { "problem": "Binary Tree Level Order Traversal", "difficulty": "Medium", "pattern": "BFS", "week": 3 },
     { "problem": "Clone Graph", "difficulty": "Medium", "pattern": "Graph DFS/BFS", "week": 3 },
     { "problem": "Encode and Decode Strings", "difficulty": "Medium", "pattern": "Design", "week": 3 },
     { "problem": "Course Schedule", "difficulty": "Medium", "pattern": "Graph Topological Sort", "week": 4 },
