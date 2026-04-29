@@ -337,6 +337,13 @@
       "difficulty": "Medium",
       "pattern": "heap",
       "notes": "Max-heap of size K with (dist, point) tuples. No sqrt needed, squared distance preserves ordering."
+    },
+    {
+      "date": "2026-04-29",
+      "problem": "LRU Cache",
+      "difficulty": "Medium",
+      "pattern": "hashmap-dll",
+      "notes": "Retry \u2014 proper DLL + hashmap O(1) implementation. Difficult but completed."
     }
   ],
   "spacedRepetition": [
@@ -454,10 +461,10 @@
     },
     {
       "problem": "LRU Cache",
-      "lastSolved": "2026-04-12",
-      "nextRetry": "2026-04-19",
-      "interval": 7,
-      "attempts": 2
+      "lastSolved": "2026-04-29",
+      "nextRetry": "2026-05-02",
+      "interval": 3,
+      "attempts": 3
     },
     {
       "problem": "Insert Interval",
