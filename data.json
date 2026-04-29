@@ -5,119 +5,435 @@
       "name": "Binary Search",
       "trigger": "Sorted array, find target or boundary. Halve the search space each step.",
       "skeleton": "left, right = 0, len(arr) - 1\nwhile left < right:\n    mid = left + (right - left) // 2\n    if condition(mid):\n        right = mid\n    else:\n        left = mid + 1\nreturn left",
-      "problems": ["Binary Search", "First Bad Version"]
+      "problems": [
+        "Binary Search",
+        "First Bad Version"
+      ]
     },
     {
       "id": "dfs-grid",
       "name": "DFS / Flood Fill",
       "trigger": "Grid or tree traversal, visit connected components, modify in-place.",
       "skeleton": "def dfs(grid, r, c):\n    if out_of_bounds or visited: return\n    mark visited\n    dfs(grid, r+1, c)\n    dfs(grid, r-1, c)\n    dfs(grid, r, c+1)\n    dfs(grid, r, c-1)",
-      "problems": ["Flood Fill", "Invert Binary Tree"]
+      "problems": [
+        "Flood Fill",
+        "Invert Binary Tree"
+      ]
     },
     {
       "id": "linked-list-reversal",
       "name": "Linked List Reversal",
       "trigger": "Reverse a linked list or portion of it. Three-pointer dance.",
       "skeleton": "prev = None\nwhile head:\n    tmp = head.next\n    head.next = prev\n    prev = head\n    head = tmp\nreturn prev",
-      "problems": ["Reverse Linked List"]
+      "problems": [
+        "Reverse Linked List"
+      ]
     },
     {
       "id": "two-pointers",
       "name": "Two Pointers",
       "trigger": "Sorted array/string, find pair or compare from both ends.",
       "skeleton": "left, right = 0, len(arr) - 1\nwhile left < right:\n    if condition: return\n    elif too_small: left += 1\n    else: right -= 1",
-      "problems": ["Valid Palindrome"]
+      "problems": [
+        "Valid Palindrome"
+      ]
     },
     {
       "id": "dummy-node",
       "name": "Dummy Node",
       "trigger": "Build a new linked list, or when head might change. Avoids edge cases.",
       "skeleton": "dummy = ListNode(0)\ncurr = dummy\n# ... build list by setting curr.next\nreturn dummy.next",
-      "problems": ["Merge Two Sorted Lists"]
+      "problems": [
+        "Merge Two Sorted Lists"
+      ]
     },
     {
       "id": "hashmap-dll",
       "name": "HashMap + Doubly Linked List",
       "trigger": "O(1) get + put with eviction order (LRU, LFU). Map for lookup, DLL for ordering.",
       "skeleton": "map: key -> node\ndll: head <-> node <-> ... <-> tail\nget: lookup map, move node to front\nput: add to map + front, if full evict tail",
-      "problems": ["LRU Cache"]
+      "problems": [
+        "LRU Cache"
+      ]
     },
     {
       "id": "dp-stairs",
       "name": "Bottom-Up DP",
       "trigger": "Count ways / min cost to reach end. Overlapping subproblems, optimal substructure.",
       "skeleton": "dp = [0] * (n + 1)\ndp[0], dp[1] = base_cases\nfor i in range(2, n + 1):\n    dp[i] = dp[i-1] + dp[i-2]\nreturn dp[n]",
-      "problems": ["Climbing Stairs"]
+      "problems": [
+        "Climbing Stairs"
+      ]
     },
     {
       "id": "counting-hashmap",
       "name": "Counting / Frequency Map",
       "trigger": "Compare character/element frequencies. One collection must be subset of another.",
       "skeleton": "from collections import defaultdict\ncount = defaultdict(int)\nfor ch in source: count[ch] += 1\nfor ch in target:\n    count[ch] -= 1\n    if count[ch] < 0: return False\nreturn True",
-      "problems": ["Ransom Note", "Longest Palindrome"]
+      "problems": [
+        "Ransom Note",
+        "Longest Palindrome"
+      ]
     },
     {
       "id": "boyer-moore-voting",
       "name": "Boyer-Moore Voting",
       "trigger": "Find element appearing more than n/2 times. O(n) time, O(1) space.",
       "skeleton": "candidate, count = None, 0\nfor num in nums:\n    if count == 0: candidate = num\n    count += 1 if num == candidate else -1\nreturn candidate",
-      "problems": ["Majority Element"]
+      "problems": [
+        "Majority Element"
+      ]
     }
   ],
   "completed": [
-    { "date": "2026-02-11", "problem": "Merge Two Sorted Lists", "difficulty": "Easy", "pattern": "dummy-node", "notes": "Clean dummy node approach, 15min" },
-    { "date": "2026-02-11", "problem": "Valid Palindrome", "difficulty": "Easy", "pattern": "two-pointers", "notes": "Solved with help, Python string methods rusty" },
-    { "date": "2026-03-24", "problem": "Invert Binary Tree", "difficulty": "Easy", "pattern": "dfs-grid", "notes": "Tree basics, recursion intro" },
-    { "date": "2026-03-24", "problem": "LRU Cache", "difficulty": "Medium", "pattern": "hashmap-dll", "notes": "Hashmap + doubly linked list design" },
-    { "date": "2026-03-26", "problem": "Binary Search", "difficulty": "Easy", "pattern": "binary-search", "notes": "Both iterative and recursive. Tougher than expected." },
-    { "date": "2026-03-27", "problem": "Flood Fill", "difficulty": "Easy", "pattern": "dfs-grid", "notes": "Grid DFS traversal" },
-    { "date": "2026-03-27", "problem": "First Bad Version", "difficulty": "Easy", "pattern": "binary-search", "notes": "Tricky — must include mid when recursing left if mid could be the answer. Base case: start == end." },
-    { "date": "2026-03-27", "problem": "Climbing Stairs", "difficulty": "Easy", "pattern": "dp-stairs", "notes": "Bottom-up DP array, straightforward." },
-    { "date": "2026-03-27", "problem": "Reverse Linked List", "difficulty": "Easy", "pattern": "linked-list-reversal", "notes": "prev starts as None not a dummy node. while head not while head.next. Return prev." },
-    { "date": "2026-04-01", "problem": "Ransom Note", "difficulty": "Easy", "pattern": "counting-hashmap", "notes": "defaultdict(int), decrement for each ransomNote char, return False if count < 0" },
-    { "date": "2026-04-02", "problem": "Design HashSet", "difficulty": "Easy", "pattern": "design-hashing", "notes": "Two approaches: boolean array 10^6+1 (brute) vs smaller array + chaining (real hash)" },
-    { "date": "2026-04-03", "problem": "Longest Palindrome", "difficulty": "Easy", "pattern": "counting-hashmap", "notes": "Take even portion of all chars (val//2)*2. Add 1 if any odd-frequency char exists (center)." },
-    { "date": "2026-04-04", "problem": "Majority Element", "difficulty": "Easy", "pattern": "boyer-moore-voting", "notes": "Boyer-Moore voting: candidate + count. Decrement on mismatch, reassign at 0. Survives because majority > n/2." },
-    { "date": "2026-04-06", "problem": "Add Binary", "difficulty": "Easy", "pattern": "string", "notes": "String manipulation, carry logic" },
-    { "date": "2026-04-07", "problem": "Diameter of Binary Tree", "difficulty": "Easy", "pattern": "dfs-grid", "notes": "Tree recursion, track max diameter via DFS height" },
-    { "date": "2026-04-09", "problem": "Merge Two Sorted Lists", "difficulty": "Easy", "pattern": "dummy-node", "notes": "Retry — dummy node approach" },
-    { "date": "2026-04-09", "problem": "Middle of the Linked List", "difficulty": "Easy", "pattern": "two-pointers", "notes": "Slow/fast pointer" },
-    { "date": "2026-04-10", "problem": "Design HashMap", "difficulty": "Easy", "pattern": "design-hashing", "notes": "Hash function + chaining" },
-    { "date": "2026-04-10", "problem": "Design HashSet", "difficulty": "Easy", "pattern": "design-hashing", "notes": "Retry — hashing fundamentals" },
-    { "date": "2026-04-10", "problem": "Ransom Note", "difficulty": "Easy", "pattern": "counting-hashmap", "notes": "Retry — frequency map" },
-    { "date": "2026-04-11", "problem": "Min Stack", "difficulty": "Medium", "pattern": "stack-design", "notes": "Two stacks — main + min tracker" },
-    { "date": "2026-04-11", "problem": "Longest Substring Without Repeating Characters", "difficulty": "Medium", "pattern": "sliding-window", "notes": "Sliding window + hashset" },
-    { "date": "2026-04-12", "problem": "Valid Palindrome", "difficulty": "Easy", "pattern": "two-pointers", "notes": "Retry" },
-    { "date": "2026-04-12", "problem": "Ransom Note", "difficulty": "Easy", "pattern": "counting-hashmap", "notes": "Retry #2" },
-    { "date": "2026-04-12", "problem": "LRU Cache", "difficulty": "Medium", "pattern": "hashmap-dll", "notes": "Retry — list+hashmap approach works but O(n) remove. Need to drill DLL version for O(1)." },
-    { "date": "2026-04-13", "problem": "Merge Intervals", "difficulty": "Medium", "pattern": "intervals", "notes": "Sort by start, merge overlapping" },
-    { "date": "2026-04-16", "problem": "Insert Interval", "difficulty": "Medium", "pattern": "intervals", "notes": "Array manipulation, merge intervals" },
-    { "date": "2026-04-16", "problem": "3Sum", "difficulty": "Medium", "pattern": "two-pointers", "notes": "Sort + two pointers, skip duplicates" },
-    { "date": "2026-04-18", "problem": "Flood Fill", "difficulty": "Easy", "pattern": "dfs-grid", "notes": "Retry — grid DFS warmup" },
-    { "date": "2026-04-18", "problem": "Number of Islands", "difficulty": "Medium", "pattern": "dfs-grid", "notes": "Grid DFS, mark visited, count components" },
-    { "date": "2026-04-20", "problem": "01 Matrix", "difficulty": "Medium", "pattern": "bfs", "notes": "Multi-source BFS — start from all zeros, expand outward" },
-    { "date": "2026-04-20", "problem": "Invert Binary Tree", "difficulty": "Easy", "pattern": "dfs-grid", "notes": "Retry — tree recursion" },
-    { "date": "2026-04-20", "problem": "Binary Tree Level Order Traversal", "difficulty": "Medium", "pattern": "bfs", "notes": "BFS with queue, process level by level" }
+    {
+      "date": "2026-02-11",
+      "problem": "Merge Two Sorted Lists",
+      "difficulty": "Easy",
+      "pattern": "dummy-node",
+      "notes": "Clean dummy node approach, 15min"
+    },
+    {
+      "date": "2026-02-11",
+      "problem": "Valid Palindrome",
+      "difficulty": "Easy",
+      "pattern": "two-pointers",
+      "notes": "Solved with help, Python string methods rusty"
+    },
+    {
+      "date": "2026-03-24",
+      "problem": "Invert Binary Tree",
+      "difficulty": "Easy",
+      "pattern": "dfs-grid",
+      "notes": "Tree basics, recursion intro"
+    },
+    {
+      "date": "2026-03-24",
+      "problem": "LRU Cache",
+      "difficulty": "Medium",
+      "pattern": "hashmap-dll",
+      "notes": "Hashmap + doubly linked list design"
+    },
+    {
+      "date": "2026-03-26",
+      "problem": "Binary Search",
+      "difficulty": "Easy",
+      "pattern": "binary-search",
+      "notes": "Both iterative and recursive. Tougher than expected."
+    },
+    {
+      "date": "2026-03-27",
+      "problem": "Flood Fill",
+      "difficulty": "Easy",
+      "pattern": "dfs-grid",
+      "notes": "Grid DFS traversal"
+    },
+    {
+      "date": "2026-03-27",
+      "problem": "First Bad Version",
+      "difficulty": "Easy",
+      "pattern": "binary-search",
+      "notes": "Tricky \u2014 must include mid when recursing left if mid could be the answer. Base case: start == end."
+    },
+    {
+      "date": "2026-03-27",
+      "problem": "Climbing Stairs",
+      "difficulty": "Easy",
+      "pattern": "dp-stairs",
+      "notes": "Bottom-up DP array, straightforward."
+    },
+    {
+      "date": "2026-03-27",
+      "problem": "Reverse Linked List",
+      "difficulty": "Easy",
+      "pattern": "linked-list-reversal",
+      "notes": "prev starts as None not a dummy node. while head not while head.next. Return prev."
+    },
+    {
+      "date": "2026-04-01",
+      "problem": "Ransom Note",
+      "difficulty": "Easy",
+      "pattern": "counting-hashmap",
+      "notes": "defaultdict(int), decrement for each ransomNote char, return False if count < 0"
+    },
+    {
+      "date": "2026-04-02",
+      "problem": "Design HashSet",
+      "difficulty": "Easy",
+      "pattern": "design-hashing",
+      "notes": "Two approaches: boolean array 10^6+1 (brute) vs smaller array + chaining (real hash)"
+    },
+    {
+      "date": "2026-04-03",
+      "problem": "Longest Palindrome",
+      "difficulty": "Easy",
+      "pattern": "counting-hashmap",
+      "notes": "Take even portion of all chars (val//2)*2. Add 1 if any odd-frequency char exists (center)."
+    },
+    {
+      "date": "2026-04-04",
+      "problem": "Majority Element",
+      "difficulty": "Easy",
+      "pattern": "boyer-moore-voting",
+      "notes": "Boyer-Moore voting: candidate + count. Decrement on mismatch, reassign at 0. Survives because majority > n/2."
+    },
+    {
+      "date": "2026-04-06",
+      "problem": "Add Binary",
+      "difficulty": "Easy",
+      "pattern": "string",
+      "notes": "String manipulation, carry logic"
+    },
+    {
+      "date": "2026-04-07",
+      "problem": "Diameter of Binary Tree",
+      "difficulty": "Easy",
+      "pattern": "dfs-grid",
+      "notes": "Tree recursion, track max diameter via DFS height"
+    },
+    {
+      "date": "2026-04-09",
+      "problem": "Merge Two Sorted Lists",
+      "difficulty": "Easy",
+      "pattern": "dummy-node",
+      "notes": "Retry \u2014 dummy node approach"
+    },
+    {
+      "date": "2026-04-09",
+      "problem": "Middle of the Linked List",
+      "difficulty": "Easy",
+      "pattern": "two-pointers",
+      "notes": "Slow/fast pointer"
+    },
+    {
+      "date": "2026-04-10",
+      "problem": "Design HashMap",
+      "difficulty": "Easy",
+      "pattern": "design-hashing",
+      "notes": "Hash function + chaining"
+    },
+    {
+      "date": "2026-04-10",
+      "problem": "Design HashSet",
+      "difficulty": "Easy",
+      "pattern": "design-hashing",
+      "notes": "Retry \u2014 hashing fundamentals"
+    },
+    {
+      "date": "2026-04-10",
+      "problem": "Ransom Note",
+      "difficulty": "Easy",
+      "pattern": "counting-hashmap",
+      "notes": "Retry \u2014 frequency map"
+    },
+    {
+      "date": "2026-04-11",
+      "problem": "Min Stack",
+      "difficulty": "Medium",
+      "pattern": "stack-design",
+      "notes": "Two stacks \u2014 main + min tracker"
+    },
+    {
+      "date": "2026-04-11",
+      "problem": "Longest Substring Without Repeating Characters",
+      "difficulty": "Medium",
+      "pattern": "sliding-window",
+      "notes": "Sliding window + hashset"
+    },
+    {
+      "date": "2026-04-12",
+      "problem": "Valid Palindrome",
+      "difficulty": "Easy",
+      "pattern": "two-pointers",
+      "notes": "Retry"
+    },
+    {
+      "date": "2026-04-12",
+      "problem": "Ransom Note",
+      "difficulty": "Easy",
+      "pattern": "counting-hashmap",
+      "notes": "Retry #2"
+    },
+    {
+      "date": "2026-04-12",
+      "problem": "LRU Cache",
+      "difficulty": "Medium",
+      "pattern": "hashmap-dll",
+      "notes": "Retry \u2014 list+hashmap approach works but O(n) remove. Need to drill DLL version for O(1)."
+    },
+    {
+      "date": "2026-04-13",
+      "problem": "Merge Intervals",
+      "difficulty": "Medium",
+      "pattern": "intervals",
+      "notes": "Sort by start, merge overlapping"
+    },
+    {
+      "date": "2026-04-16",
+      "problem": "Insert Interval",
+      "difficulty": "Medium",
+      "pattern": "intervals",
+      "notes": "Array manipulation, merge intervals"
+    },
+    {
+      "date": "2026-04-16",
+      "problem": "3Sum",
+      "difficulty": "Medium",
+      "pattern": "two-pointers",
+      "notes": "Sort + two pointers, skip duplicates"
+    },
+    {
+      "date": "2026-04-18",
+      "problem": "Flood Fill",
+      "difficulty": "Easy",
+      "pattern": "dfs-grid",
+      "notes": "Retry \u2014 grid DFS warmup"
+    },
+    {
+      "date": "2026-04-18",
+      "problem": "Number of Islands",
+      "difficulty": "Medium",
+      "pattern": "dfs-grid",
+      "notes": "Grid DFS, mark visited, count components"
+    },
+    {
+      "date": "2026-04-20",
+      "problem": "01 Matrix",
+      "difficulty": "Medium",
+      "pattern": "bfs",
+      "notes": "Multi-source BFS \u2014 start from all zeros, expand outward"
+    },
+    {
+      "date": "2026-04-20",
+      "problem": "Invert Binary Tree",
+      "difficulty": "Easy",
+      "pattern": "dfs-grid",
+      "notes": "Retry \u2014 tree recursion"
+    },
+    {
+      "date": "2026-04-20",
+      "problem": "Binary Tree Level Order Traversal",
+      "difficulty": "Medium",
+      "pattern": "bfs",
+      "notes": "BFS with queue, process level by level"
+    },
+    {
+      "date": "2026-04-29",
+      "problem": "Clone Graph",
+      "difficulty": "Medium",
+      "pattern": "graph-bfs-dfs",
+      "notes": "Deep copy graph with hashmap to track visited. Hard first attempt, needs retry."
+    }
   ],
   "spacedRepetition": [
-    { "problem": "Merge Two Sorted Lists", "lastSolved": "2026-02-11", "nextRetry": "2026-04-01", "interval": 3 },
-    { "problem": "Valid Palindrome", "lastSolved": "2026-02-11", "nextRetry": "2026-04-01", "interval": 3 },
-    { "problem": "Invert Binary Tree", "lastSolved": "2026-03-24", "nextRetry": "2026-03-27", "interval": 3 },
-    { "problem": "LRU Cache", "lastSolved": "2026-03-24", "nextRetry": "2026-03-27", "interval": 3 },
-    { "problem": "Binary Search", "lastSolved": "2026-03-26", "nextRetry": "2026-03-29", "interval": 3 },
-    { "problem": "Flood Fill", "lastSolved": "2026-04-01", "nextRetry": "2026-04-08", "interval": 7 },
-    { "problem": "First Bad Version", "lastSolved": "2026-04-01", "nextRetry": "2026-04-08", "interval": 7 },
-    { "problem": "Climbing Stairs", "lastSolved": "2026-04-01", "nextRetry": "2026-04-08", "interval": 7 },
-    { "problem": "Reverse Linked List", "lastSolved": "2026-04-01", "nextRetry": "2026-04-08", "interval": 7 },
-    { "problem": "Ransom Note", "lastSolved": "2026-04-01", "nextRetry": "2026-04-08", "interval": 7 },
-    { "problem": "Design HashSet", "lastSolved": "2026-04-02", "nextRetry": "2026-04-09", "interval": 7 },
-    { "problem": "Longest Palindrome", "lastSolved": "2026-04-03", "nextRetry": "2026-04-10", "interval": 7 },
-    { "problem": "Majority Element", "lastSolved": "2026-04-04", "nextRetry": "2026-04-11", "interval": 7 },
-    { "problem": "Add Binary", "lastSolved": "2026-04-06", "nextRetry": "2026-04-13", "interval": 7 },
-    { "problem": "Diameter of Binary Tree", "lastSolved": "2026-04-07", "nextRetry": "2026-04-14", "interval": 7 },
-    { "problem": "Merge Two Sorted Lists", "lastSolved": "2026-04-09", "nextRetry": "2026-04-16", "interval": 7 },
-    { "problem": "Middle of the Linked List", "lastSolved": "2026-04-09", "nextRetry": "2026-04-16", "interval": 7 },
-    { "problem": "Design HashMap", "lastSolved": "2026-04-10", "nextRetry": "2026-04-17", "interval": 7 }
+    {
+      "problem": "Merge Two Sorted Lists",
+      "lastSolved": "2026-02-11",
+      "nextRetry": "2026-04-01",
+      "interval": 3
+    },
+    {
+      "problem": "Valid Palindrome",
+      "lastSolved": "2026-02-11",
+      "nextRetry": "2026-04-01",
+      "interval": 3
+    },
+    {
+      "problem": "Invert Binary Tree",
+      "lastSolved": "2026-03-24",
+      "nextRetry": "2026-03-27",
+      "interval": 3
+    },
+    {
+      "problem": "LRU Cache",
+      "lastSolved": "2026-03-24",
+      "nextRetry": "2026-03-27",
+      "interval": 3
+    },
+    {
+      "problem": "Binary Search",
+      "lastSolved": "2026-03-26",
+      "nextRetry": "2026-03-29",
+      "interval": 3
+    },
+    {
+      "problem": "Flood Fill",
+      "lastSolved": "2026-04-01",
+      "nextRetry": "2026-04-08",
+      "interval": 7
+    },
+    {
+      "problem": "First Bad Version",
+      "lastSolved": "2026-04-01",
+      "nextRetry": "2026-04-08",
+      "interval": 7
+    },
+    {
+      "problem": "Climbing Stairs",
+      "lastSolved": "2026-04-01",
+      "nextRetry": "2026-04-08",
+      "interval": 7
+    },
+    {
+      "problem": "Reverse Linked List",
+      "lastSolved": "2026-04-01",
+      "nextRetry": "2026-04-08",
+      "interval": 7
+    },
+    {
+      "problem": "Ransom Note",
+      "lastSolved": "2026-04-01",
+      "nextRetry": "2026-04-08",
+      "interval": 7
+    },
+    {
+      "problem": "Design HashSet",
+      "lastSolved": "2026-04-02",
+      "nextRetry": "2026-04-09",
+      "interval": 7
+    },
+    {
+      "problem": "Longest Palindrome",
+      "lastSolved": "2026-04-03",
+      "nextRetry": "2026-04-10",
+      "interval": 7
+    },
+    {
+      "problem": "Majority Element",
+      "lastSolved": "2026-04-04",
+      "nextRetry": "2026-04-11",
+      "interval": 7
+    },
+    {
+      "problem": "Add Binary",
+      "lastSolved": "2026-04-06",
+      "nextRetry": "2026-04-13",
+      "interval": 7
+    },
+    {
+      "problem": "Diameter of Binary Tree",
+      "lastSolved": "2026-04-07",
+      "nextRetry": "2026-04-14",
+      "interval": 7
+    },
+    {
+      "problem": "Merge Two Sorted Lists",
+      "lastSolved": "2026-04-09",
+      "nextRetry": "2026-04-16",
+      "interval": 7
+    },
+    {
+      "problem": "Middle of the Linked List",
+      "lastSolved": "2026-04-09",
+      "nextRetry": "2026-04-16",
+      "interval": 7
+    },
+    {
+      "problem": "Design HashMap",
+      "lastSolved": "2026-04-10",
+      "nextRetry": "2026-04-17",
+      "interval": 7
+    }
   ],
   "weekPlan": {
     "totalWeeks": 8,
@@ -126,23 +442,107 @@
     "targetPerDay": 2
   },
   "upNext": [
-    { "problem": "K Closest Points to Origin", "difficulty": "Medium", "pattern": "Heap", "week": 3 },
-    { "problem": "Clone Graph", "difficulty": "Medium", "pattern": "Graph DFS/BFS", "week": 3 },
-    { "problem": "Encode and Decode Strings", "difficulty": "Medium", "pattern": "Design", "week": 3 },
-    { "problem": "Course Schedule", "difficulty": "Medium", "pattern": "Graph Topological Sort", "week": 4 },
-    { "problem": "Coin Change", "difficulty": "Medium", "pattern": "DP", "week": 4 },
-    { "problem": "House Robber", "difficulty": "Medium", "pattern": "DP", "week": 4 },
-    { "problem": "Combination Sum", "difficulty": "Medium", "pattern": "Backtracking", "week": 4 },
-    { "problem": "Word Break", "difficulty": "Medium", "pattern": "DP", "week": 5 },
-    { "problem": "Implement Trie", "difficulty": "Medium", "pattern": "Trie", "week": 5 },
-    { "problem": "Container With Most Water", "difficulty": "Medium", "pattern": "Two Pointers", "week": 5 },
-    { "problem": "Longest Increasing Subsequence", "difficulty": "Medium", "pattern": "DP", "week": 5 },
-    { "problem": "Unique Paths", "difficulty": "Medium", "pattern": "DP", "week": 6 },
-    { "problem": "Jump Game", "difficulty": "Medium", "pattern": "Greedy", "week": 6 },
-    { "problem": "Search in Rotated Sorted Array", "difficulty": "Medium", "pattern": "Binary Search", "week": 6 },
-    { "problem": "Validate BST", "difficulty": "Medium", "pattern": "Tree DFS", "week": 6 },
-    { "problem": "Merge K Sorted Lists", "difficulty": "Hard", "pattern": "Heap", "week": 7 },
-    { "problem": "Find Median from Data Stream", "difficulty": "Hard", "pattern": "Heap", "week": 7 },
-    { "problem": "Word Search II", "difficulty": "Hard", "pattern": "Trie + Backtracking", "week": 8 }
+    {
+      "problem": "K Closest Points to Origin",
+      "difficulty": "Medium",
+      "pattern": "Heap",
+      "week": 3
+    },
+    {
+      "problem": "Encode and Decode Strings",
+      "difficulty": "Medium",
+      "pattern": "Design",
+      "week": 3
+    },
+    {
+      "problem": "Course Schedule",
+      "difficulty": "Medium",
+      "pattern": "Graph Topological Sort",
+      "week": 4
+    },
+    {
+      "problem": "Coin Change",
+      "difficulty": "Medium",
+      "pattern": "DP",
+      "week": 4
+    },
+    {
+      "problem": "House Robber",
+      "difficulty": "Medium",
+      "pattern": "DP",
+      "week": 4
+    },
+    {
+      "problem": "Combination Sum",
+      "difficulty": "Medium",
+      "pattern": "Backtracking",
+      "week": 4
+    },
+    {
+      "problem": "Word Break",
+      "difficulty": "Medium",
+      "pattern": "DP",
+      "week": 5
+    },
+    {
+      "problem": "Implement Trie",
+      "difficulty": "Medium",
+      "pattern": "Trie",
+      "week": 5
+    },
+    {
+      "problem": "Container With Most Water",
+      "difficulty": "Medium",
+      "pattern": "Two Pointers",
+      "week": 5
+    },
+    {
+      "problem": "Longest Increasing Subsequence",
+      "difficulty": "Medium",
+      "pattern": "DP",
+      "week": 5
+    },
+    {
+      "problem": "Unique Paths",
+      "difficulty": "Medium",
+      "pattern": "DP",
+      "week": 6
+    },
+    {
+      "problem": "Jump Game",
+      "difficulty": "Medium",
+      "pattern": "Greedy",
+      "week": 6
+    },
+    {
+      "problem": "Search in Rotated Sorted Array",
+      "difficulty": "Medium",
+      "pattern": "Binary Search",
+      "week": 6
+    },
+    {
+      "problem": "Validate BST",
+      "difficulty": "Medium",
+      "pattern": "Tree DFS",
+      "week": 6
+    },
+    {
+      "problem": "Merge K Sorted Lists",
+      "difficulty": "Hard",
+      "pattern": "Heap",
+      "week": 7
+    },
+    {
+      "problem": "Find Median from Data Stream",
+      "difficulty": "Hard",
+      "pattern": "Heap",
+      "week": 7
+    },
+    {
+      "problem": "Word Search II",
+      "difficulty": "Hard",
+      "pattern": "Trie + Backtracking",
+      "week": 8
+    }
   ]
 }
